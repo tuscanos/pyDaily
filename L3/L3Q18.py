@@ -13,3 +13,28 @@
 # ABd1234@1,a F1#,2w3E*,2We3345
 # Then, the output of the program should be:
 # ABd1234@1
+
+import re
+
+pwd = input("Enter comma separated passwords: ").split(',')
+
+value = []
+
+for p in pwd:
+    if len(p) < 6 or len(p) > 12:
+        continue
+    else:
+        pass
+
+    if not re.search('[a-z]', p):
+        continue
+    if not re.search('[0-9]', p):
+        continue
+    if not re.search('[A-Z]', p):
+        continue
+    if not re.search('[$#@]', p):
+        continue
+    else:
+        value.append(p)
+
+print(','.join(value))
