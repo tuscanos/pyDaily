@@ -10,7 +10,7 @@ class MyGenerator():
         self.num = n
 
     # This can be any function name
-    def iter(self):
+    def __iter__(self):     # This allows constant iteration on the object
         n = self.num
         while n > 0:
             if n % 7 != 0:
@@ -23,8 +23,14 @@ class MyGenerator():
 
 
 g = MyGenerator(100)
-it = g.iter()       # This gives generator object
-print(it)
+# it = g.iter()       # This gives generator object, this is not needed
+# print(it)
 
-for i in it:        # for loop calls it.next() method to get the next value
+for i in g:        # for loop calls it.next() method to get the next value
+    print(i)
+
+# Iteration does not run out of values when we use above class defination with __iter__
+# below values works because of class __iter__ method. otherwise it would be stopIteration error
+
+for i in g:        # for loop calls it.next() method to get the next value
     print(i)
